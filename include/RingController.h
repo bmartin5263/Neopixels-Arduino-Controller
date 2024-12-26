@@ -7,7 +7,6 @@
 
 #include "Color.h"
 
-class NeopixelRing;
 template<int N>
 class RingController {
 public:
@@ -42,7 +41,7 @@ public:
   }
 
   auto cycleColor() -> void {
-    colors[pixel] = Color::cycleColor(colors[pixel]);
+    colors[pixel] = Color::CycleColor(colors[pixel]);
   }
 
   auto setColor(int pixel, const Color& color) -> void {

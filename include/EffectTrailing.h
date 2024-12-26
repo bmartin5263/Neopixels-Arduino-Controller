@@ -7,11 +7,11 @@
 
 #include "Color.h"
 
-class NeopixelRing;
+class NeopixelLine;
 class EffectTrailing {
 public:
   auto update() -> void;
-  auto draw(NeopixelRing& ring) -> void;
+  auto draw(NeopixelLine& ring) -> void;
   auto setColor(const Color& color) -> void;
   auto move() -> void;
 

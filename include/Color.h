@@ -14,7 +14,7 @@ struct Color {
   bool operator==(const Color& rhs) const;
   bool operator!=(const Color& rhs) const;
 
-  static Color cycleColor(const Color& color);
+  static Color CycleColor(const Color& color);
 
   u8 r{};
   u8 g{};
@@ -46,6 +46,11 @@ struct Color {
 
   static auto WHITE() -> Color;
   static auto OFF() -> Color;
+
+  static Color HslToRgb(double h, double s, double l);
+
+private:
+  static double hueToRgb(double p, double q, double t);
 };
 
 #endif //NEOPIXELS_COLOR_H

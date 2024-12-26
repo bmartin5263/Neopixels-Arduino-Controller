@@ -3,7 +3,7 @@
 //
 
 #include "EffectTrailing.h"
-#include "NeopixelRing.h"
+#include "NeopixelLine.h"
 #include "Log.h"
 
 typedef struct {
@@ -69,7 +69,7 @@ auto EffectTrailing::move() -> void {
   }
 }
 
-auto EffectTrailing::draw(NeopixelRing& ring) -> void {
+auto EffectTrailing::draw(NeopixelLine& ring) -> void {
   auto p1 = pixel;
   auto p2 = (pixel + 1) % 16;
   auto p3 = (pixel + 2) % 16;
@@ -80,10 +80,7 @@ auto EffectTrailing::draw(NeopixelRing& ring) -> void {
   RGB rgb = hslToRgb(h, 1.0, .5);
   Color color{rgb.r, rgb.g, rgb.b};
 
-  ring.setColor(p1, color);
-  ring.setColor(p2, color);
-  ring.setColor(p3, color);
-  ring.setColor(p4, color);
-  ring.setColor(p5, color);
-  ring.setColor(p6, color);
+  for (int i = 0; i < 16; ++i) {
+    ring.setColor(i, color);
+  }
 }

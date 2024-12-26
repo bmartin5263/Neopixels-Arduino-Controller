@@ -3,7 +3,7 @@
 //
 
 #include "Effect.h"
-#include "NeopixelRing.h"
+#include "NeopixelLine.h"
 
 auto Effect::update() -> void {
   if (time++ >= 60) {
@@ -15,8 +15,8 @@ auto Effect::update() -> void {
   }
 }
 
-auto Effect::draw(NeopixelRing& ring) -> void {
-  ring.setColor(pixel, Color::BLUE());
+auto Effect::draw(NeopixelLine& line) -> void {
+  line.setColor(pixel, Color::BLUE());
 }
 
 auto Effect::setColor(const Color& color) -> void {
