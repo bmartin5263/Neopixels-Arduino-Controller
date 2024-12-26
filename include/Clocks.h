@@ -7,8 +7,8 @@
 
 class Clocks {
 public:
-  auto NextTick() -> void;
-  auto GlobalTime() -> long;
+  static auto NextTick() -> void;
+  static auto GlobalTime() -> long;
 
 private:
   long global{};

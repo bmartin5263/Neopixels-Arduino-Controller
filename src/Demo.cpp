@@ -9,7 +9,7 @@ static float s = 1.0; // Saturation [0, 1]
 static float l = .5;  // Lightness [0, 1]
 static int timer = 0;
 
-auto Demo::setup() -> void {
+auto Demo::init() -> void {
   ring.init();
   ring.setBrightness(10);
 

@@ -17,7 +17,7 @@
 
 class Demo {
 public:
-  auto setup() -> void;
+  auto init() -> void;
   auto update() -> void;
   auto draw() -> void;
 

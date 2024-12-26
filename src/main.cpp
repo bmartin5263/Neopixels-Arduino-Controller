@@ -1,25 +1,12 @@
 #include <Arduino.h>
-#include "Log.h"
-#include "Timer.h"
-#include "Demo.h"
+#include "App.h"
 
-Demo demo;
+App app;
 
 void setup() {
-  Log::init();
-  demo.setup();
-}
-
-void update() {
-  Timer::Update();
-  demo.update();
-}
-
-void draw() {
-  demo.draw();
+  app.init();
 }
 
 void loop() {
-  update();
-  draw();
+  app.loop();
 }

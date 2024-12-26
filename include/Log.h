@@ -10,23 +10,23 @@
 class Log {
 public:
 
-  static auto init() -> void {
-    Serial.begin(9600);
+  static auto Init(unsigned long baud = 9600) -> void {
+    Serial.begin(baud);
   }
 
-  static auto infoLn(const char* msg) -> void {
+  static auto InfoLn(const char* msg) -> void {
     Serial.println(msg);
   }
 
-  static auto info(const char* msg) -> void {
+  static auto Info(const char* msg) -> void {
     Serial.print(msg);
   }
 
-  static auto infoLn(int msg) -> void {
+  static auto InfoLn(int msg) -> void {
     Serial.println(msg);
   }
 
-  static auto info(int msg) -> void {
+  static auto Info(int msg) -> void {
     Serial.print(msg);
   }
 
