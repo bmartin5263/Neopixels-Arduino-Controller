@@ -45,6 +45,10 @@ public:
     colors[pixel] = Color::cycleColor(colors[pixel]);
   }
 
+  auto setColor(int pixel, const Color& color) -> void {
+    colors[pixel] = color;
+  }
+
 private:
   int pixel;
   int pixelChangeTime;

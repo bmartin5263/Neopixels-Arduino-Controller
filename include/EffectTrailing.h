@@ -16,8 +16,10 @@ public:
   auto move() -> void;
 
 private:
+  double h{};
   int moveTime{};
   int cycleTime{};
+  int hueTime{};
   int pixel{};
   int cycle{};
 };

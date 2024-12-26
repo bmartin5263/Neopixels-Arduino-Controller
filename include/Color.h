@@ -9,7 +9,7 @@
 
 struct Color {
   Color();
-  Color(u8 r, u8 g, u8 b, u8 w);
+  Color(u8 r, u8 g, u8 b, u8 w = 0);
 
   bool operator==(const Color& rhs) const;
   bool operator!=(const Color& rhs) const;
@@ -21,12 +21,29 @@ struct Color {
   u8 b{};
   u8 w{};
 
+  // https://simple.wikipedia.org/wiki/List_of_colors
+
   static auto RED() -> Color;
-  static auto GREEN() -> Color;
-  static auto BLUE() -> Color;
-  static auto AQUA() -> Color;
-  static auto PURPLE() -> Color;
+  static auto MAROON() -> Color;
+  static auto SALMON() -> Color;
+
+  static auto ORANGE() -> Color;
+  static auto GOLD() -> Color;
   static auto YELLOW() -> Color;
+
+  static auto LIME() -> Color;
+  static auto SPRING_GREEN() -> Color;
+  static auto GREEN() -> Color;
+
+  static auto AQUAMARINE() -> Color;
+  static auto CYAN() -> Color;
+  static auto BLUE() -> Color;
+
+  static auto PURPLE() -> Color;
+  static auto VIOLET() -> Color;
+  static auto INDIGO() -> Color;
+  static auto MAGENTA() -> Color;
+
   static auto WHITE() -> Color;
   static auto OFF() -> Color;
 };

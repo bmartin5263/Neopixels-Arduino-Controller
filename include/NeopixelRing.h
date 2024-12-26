@@ -8,7 +8,7 @@
 #include <../lib/AdafruitNeopixel/Adafruit_NeoPixel.h>
 #include "Types.h"
 
-class Color;
+struct Color;
 class NeopixelRing {
 public:
   NeopixelRing(u16 ledCount, i16 pinNumber, neoPixelType type);

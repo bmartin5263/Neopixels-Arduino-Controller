@@ -19,11 +19,13 @@ auto NeopixelRing::setBrightness(u8 value) -> void {
 }
 
 auto NeopixelRing::setColor(u16 pixel, const Color& color) -> void {
-  impl.setPixelColor(pixel, color.r, color.g, color.b, color.w);
+  // Arguments out of order is intentional
+  impl.setPixelColor(pixel, color.g, color.r, color.b, color.w);
 }
 
 auto NeopixelRing::setColor(u16 pixel, u8 r, u8 g, u8 b, u8 w) -> void {
-  impl.setPixelColor(pixel, r, g, b, w);
+  // Arguments out of order is intentional
+  impl.setPixelColor(pixel, g, r, b, w);
 }
 
 auto NeopixelRing::clear() -> void {
