@@ -22,11 +22,19 @@ public:
     Serial.print(msg);
   }
 
-  static auto InfoLn(int msg) -> void {
+  static auto InfoLn(long msg) -> void {
     Serial.println(msg);
   }
 
-  static auto Info(int msg) -> void {
+  static auto Info(long msg) -> void {
+    Serial.print(msg);
+  }
+
+  static auto InfoLn(unsigned long msg) -> void {
+    Serial.println(msg);
+  }
+
+  static auto Info(unsigned long msg) -> void {
     Serial.print(msg);
   }
 

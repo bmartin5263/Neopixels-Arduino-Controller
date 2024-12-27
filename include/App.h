@@ -5,7 +5,7 @@
 #ifndef NEOPIXELS_APP_H
 #define NEOPIXELS_APP_H
 
-#include "Demo.h"
+#include "TimerDemo.h"
 
 class App {
 public:
@@ -13,7 +13,7 @@ public:
   auto loop() -> void;
 
 private:
-  Demo demo;
+//  TimerDemo demo{};
 
   auto update() -> void;
   auto draw() -> void;

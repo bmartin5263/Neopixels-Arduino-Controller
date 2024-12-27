@@ -28,8 +28,6 @@ public:
 
   auto getColor(u16 pixel) -> Color;
 
-  virtual ~NeopixelLine() = default;
-
 private:
   Adafruit_NeoPixel impl;
 };

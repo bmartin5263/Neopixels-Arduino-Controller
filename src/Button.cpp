@@ -5,18 +5,20 @@
 #include "DigitalPin.h"
 #include "Button.h"
 
-Button::Button(DigitalPin* pin) : pin(pin), state(ButtonState::UNPRESSED), timeInState(0), _onPress([](){}) {
+Button::Button(DigitalPin pin)
+  : pin(pin), state(ButtonState::UNPRESSED), timeInState(0), _repeatDelay(0), _onPress([](){})
+{
 }
 
 auto Button::init() -> Button& {
-  pin->open(INPUT);
+  pin.open(INPUT);
   return *this;
 }
 
 auto Button::update() -> void {
   timeInState += 1;
 
-  auto pressed = pin->read();
+  auto pressed = pin.read();
   if (state == ButtonState::UNPRESSED || state == ButtonState::UNPRESS) {
     state = pressed ? ButtonState::PRESS : ButtonState::UNPRESSED;
   }

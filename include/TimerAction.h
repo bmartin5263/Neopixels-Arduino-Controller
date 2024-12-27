@@ -8,8 +8,9 @@
 #include "TimerId.h"
 
 class TimerAction {
-  auto operator()(TimerId timerId, long globalTime) -> void;
-  virtual ~TimerAction();
+public:
+  virtual auto execute(TimerId timerId, u32 globalTime) -> void = 0;
+  virtual ~TimerAction() = default;
 };
 
 #endif //NEOPIXELS_TIMERACTION_H

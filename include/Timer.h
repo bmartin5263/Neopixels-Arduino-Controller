@@ -5,23 +5,36 @@
 #ifndef NEOPIXELS_TIMER_H
 #define NEOPIXELS_TIMER_H
 
+#include "Types.h"
 #include "TimerId.h"
-#include "Func.h"
+#include "TimerAction.h"
+#include "TimerNodePool.h"
 
 class Timer {
 public:
-  static auto SetTimeout(int time, Callable action) -> TimerId;
-  static auto SetInterval(int time, Callable action) -> TimerId;
+  static auto SetTimeout(u32 time, TimerAction& action) -> TimerId;
   static auto Cancel(TimerId id) -> void;
   static auto Update() -> void;
 
 private:
-  static Timer& Instance();
+  Timer();
+  static auto Instance() -> Timer&;
 
-  auto setTimeout(int time, Callable action) -> TimerId;
-  auto setInterval(int time, Callable action) -> TimerId;
-  auto cancel(TimerId id) -> void;
+  TimerNodePool<20> nodePool;
+  u16 nextVersion;
+  TimerNode* head;
+  TimerNode* queue;
+
+  auto setTimeout(u32 time, TimerAction& action) -> TimerId;
+  auto setInterval(u32 time, TimerAction& action, i16 repeats) -> TimerId;
   auto update() -> void;
+  auto pop(u32 time) -> TimerNode*;
+
+  auto processInserts() -> void;
+  auto processDeletes() -> void;
+  auto enqueue(TimerNode* node) -> void;
+  auto insert(TimerNode* node) -> void;
+  auto createNode() -> TimerNode*;
 };
 
 #endif //NEOPIXELS_TIMER_H

@@ -9,17 +9,17 @@
 #include "Types.h"
 #include "Func.h"
 #include "ButtonState.h"
+#include "DigitalPin.h"
 
-class DigitalPin;
 class Button {
 public:
-  Button(DigitalPin* pin);
+  Button(DigitalPin pin);
   auto init() -> Button&;
   auto update() -> void;
   auto getState() -> ButtonState;
 
 private:
-  DigitalPin* pin;
+  DigitalPin pin;
   ButtonState state;
   int timeInState;
   int _repeatDelay;

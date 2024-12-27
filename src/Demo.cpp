@@ -73,13 +73,13 @@ auto Demo::update() -> void {
   effectTrailing.setMoveRate(normalize(car.getSpeed()));
   unsigned char x = normalize2(car.getAcceleration());
 
-  int blue = 155 - (x * 1.2);
-  if (blue < 0) {
-    blue = 0;
+  int blue = (x * .4);
+  if (blue > 255) {
+    blue = 255;
   }
   auto blueChar = (unsigned char)blue;
 
-  int red = 100 + (x * .3);
+  int red = 255 + (x * .3);
   if (red > 255) {
     red = 255;
   }

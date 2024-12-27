@@ -12,6 +12,7 @@ NeopixelLine::NeopixelLine(u16 ledCount, i16 pinNumber, neoPixelType type)
 
 auto NeopixelLine::init() -> void {
   impl.begin();
+  impl.setBrightness(10);
 }
 
 auto NeopixelLine::clear() -> void {
