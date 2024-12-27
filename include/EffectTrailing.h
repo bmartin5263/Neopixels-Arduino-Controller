@@ -12,16 +12,17 @@ class EffectTrailing {
 public:
   auto update() -> void;
   auto draw(NeopixelLine& ring) -> void;
-  auto setColor(const Color& color) -> void;
+  auto setMoveRate(int value) -> void;
+  auto setColor(const Color& value) -> void;
   auto move() -> void;
 
 private:
+  Color color{Color::RED()};
   double h{};
   int moveTime{};
-  int cycleTime{};
+  int moveRate{50};
   int hueTime{};
   int pixel{};
-  int cycle{};
 };
 
 #endif //NEOPIXELS_EFFECTTRAILING_H

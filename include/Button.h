@@ -16,8 +16,7 @@ public:
   Button(DigitalPin* pin);
   auto init() -> Button&;
   auto update() -> void;
-  auto onPress(Callable function) -> Button&;
-  auto repeatDelay(int delay) -> Button&;
+  auto getState() -> ButtonState;
 
 private:
   DigitalPin* pin;

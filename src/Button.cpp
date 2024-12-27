@@ -23,18 +23,8 @@ auto Button::update() -> void {
   else if (state == ButtonState::PRESS || state == ButtonState::PRESSED) {
     state = pressed ? ButtonState::PRESSED : ButtonState::UNPRESS;
   }
-
-  if (state == ButtonState::PRESS) {
-    _onPress();
-  }
 }
 
-auto Button::onPress(Callable function) -> Button& {
-  _onPress = function;
-  return *this;
-}
-
-auto Button::repeatDelay(int delay) -> Button& {
-  _repeatDelay = delay;
-  return *this;
+auto Button::getState() -> ButtonState {
+  return state;
 }

@@ -9,90 +9,88 @@ static float s = 1.0; // Saturation [0, 1]
 static float l = .5;  // Lightness [0, 1]
 static int timer = 0;
 
+float normalize(float value) {
+  // Ensure input is within valid range
+  if (value <= 5.0f) {
+    return 85.0f;
+  }
+  if (value >= 130.0f) {
+    return 11.0f;
+  }
+
+  // Perform linear mapping
+  float input_min = 5.0f;
+  float input_max = 130.0f;
+  float output_min = 70.0f;
+  float output_max = 9.0f;
+
+  return output_min + (output_max - output_min) * (value - input_min) / (input_max - input_min);
+}
+
+float normalize2(float value) {
+  // Ensure input is within valid range
+  if (value <= 0.0f) {
+    return 0.0f;
+  }
+  if (value >= .4f) {
+    return 150.0f;
+  }
+
+  // Perform linear mapping
+  float input_min = 0.0f;
+  float input_max = .4f;
+  float output_min = 0.0f;
+  float output_max = 150.0f;
+
+  return output_min + (output_max - output_min) * (value - input_min) / (input_max - input_min);
+}
+
 auto Demo::init() -> void {
   ring.init();
   ring.setBrightness(10);
 
-  nextPixelButton.init();
-//  nextPixelButton.onPress([](){
-//    effectTrailing.move();
-//  });
-
-  nextColorButton.init();
-//  nextColorButton.onPress([](){
-//    ringController.cycleColor();
-//  });
-
-//  Color colors[] = {
-//    Color::SALMON(),
-//    Color::RED(),
-//    Color::ORANGE(),
-//    Color::GOLD(),
-//    Color::MAROON(),
-//    Color::YELLOW(),
-//    Color::LIME(),
-//    Color::SPRING_GREEN(),
-//    Color::GREEN(),
-//    Color::AQUAMARINE(),
-//    Color::CYAN(),
-//    Color::BLUE(),
-//    Color::PURPLE(),
-//    Color::VIOLET(),
-//    Color::INDIGO(),
-//    Color::MAGENTA(),
-//  };
-
-  Color colors[] = {
-    Color::HslToRgb(0, 1.0, .5),
-    Color::HslToRgb(.0625, 1.0, .5),
-    Color::HslToRgb(.0625 * 2, 1.0, .5),
-    Color::HslToRgb(.0625 * 3, 1.0, .5),
-    Color::HslToRgb(.0625 * 4, 1.0, .5),
-    Color::HslToRgb(.0625 * 5, 1.0, .5),
-    Color::HslToRgb(.0625 * 6, 1.0, .5),
-    Color::HslToRgb(.0625 * 7, 1.0, .5),
-    Color::HslToRgb(.0625 * 8, 1.0, .5),
-    Color::HslToRgb(.0625 * 9, 1.0, .5),
-    Color::HslToRgb(.0625 * 10, 1.0, .5),
-    Color::HslToRgb(.0645 * 11, 1.0, .5),
-    Color::HslToRgb(.0645 * 12, 1.0, .5),
-    Color::HslToRgb(.0635 * 13, 1.0, .5),
-    Color::HslToRgb(.0645 * 14, 1.0, .5),
-    Color::HslToRgb(.0655 * 15, 1.0, .5),
-  };
-
-  int counter = 0;
-  for (auto& color : colors) {
-    ringController.setColor(counter++, color);
-  }
+  accelerate.init();
+  decelerate.init();
 }
 
 auto Demo::update() -> void {
-  effectTrailing.update();
-//  nextPixelButton.update();
-//  nextColorButton.update();
-
-  timer += 1;
-  if (timer >= 8) {
-
-    h += 0.01;
-    if (h > 1.0) {
-      h = 0.0;
-    }
-
-    Color color = Color::HslToRgb(h, s, l);
-
-    for (int i = 0; i < LED_COUNT; ++i) {
-//      ringController.setColor(i, color);
-    }
-
-    timer = 0;
+  accelerate.update();
+  if (accelerate.getState() == ButtonState::PRESS) {
+    accelerating = true;
   }
+
+  decelerate.update();
+  if (decelerate.getState() == ButtonState::PRESS) {
+    accelerating = false;
+  }
+
+  if (accelerating) {
+    car.accelerate();
+  }
+
+  car.update();
+
+  effectTrailing.setMoveRate(normalize(car.getSpeed()));
+  unsigned char x = normalize2(car.getAcceleration());
+
+  int blue = 155 - (x * 1.2);
+  if (blue < 0) {
+    blue = 0;
+  }
+  auto blueChar = (unsigned char)blue;
+
+  int red = 100 + (x * .3);
+  if (red > 255) {
+    red = 255;
+  }
+  auto redChar = (unsigned char)red;
+
+  effectTrailing.setColor({redChar, 0, blueChar});
+  effectTrailing.update();
 }
 
 auto Demo::draw() -> void {
   ring.clear();
-  ringController.draw(ring);
-//  effectTrailing.draw(ring);
+  effectTrailing.draw(ring);
   ring.show();
 }

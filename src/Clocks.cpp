@@ -17,6 +17,10 @@ auto Clocks::GlobalTime() -> long {
   return Instance().globalTime();
 }
 
+auto Clocks::globalTime() -> long {
+  return global;
+}
+
 auto Clocks::nextTick() -> void {
   global += 1;
 }

@@ -14,6 +14,7 @@
 #include "Effect.h"
 #include "EffectTrailing.h"
 #include "Timer.h"
+#include "Car.h"
 
 class Demo {
 public:
@@ -28,11 +29,11 @@ private:
   DigitalPin pin2{2};
   DigitalPin pin3{3};
   NeopixelRing ring{LED_COUNT, LED_PIN, NEO_RGBW + NEO_KHZ800};
-  Button nextPixelButton{&pin3};
-  Button nextColorButton{&pin2};
-  RingController<16> ringController{};
-  Effect effect{};
+  Button accelerate{&pin3};
+  Button decelerate{&pin2};
   EffectTrailing effectTrailing{};
+  Car car{};
+  boolean accelerating{};
 
 };
 
