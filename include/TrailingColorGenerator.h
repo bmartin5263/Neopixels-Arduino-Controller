@@ -12,7 +12,7 @@ class NeopixelLine;
 class TrailingColorGenerator : public ColorGenerator {
 public:
   auto generate(u32 time) -> Color override;
-  virtual auto generate(u32 time, u8 offset, u8 phase, u8 speed) -> Color = 0;
+  virtual auto generate(u32 time, u8 length, u8 offset, u16 phase, u8 speed) -> Color = 0;
   virtual ~TrailingColorGenerator() = default;
 };
 

@@ -9,12 +9,12 @@
 
 class BlueRedGenerator : public TrailingColorGenerator {
 public:
-  auto generate(u32 time, u8 offset, u8 phase, u8 speed) -> Color override;
+  auto generate(u32 time, u8 length, u8 offset, u16 phase, u8 speed) -> Color override;
 };
 
 class RainbowGenerator : public TrailingColorGenerator {
 public:
-  auto generate(u32 time, u8 offset, u8 phase, u8 speed) -> Color override;
+  auto generate(u32 time, u8 length, u8 offset, u16 phase, u8 speed) -> Color override;
 };
 
 #endif //NEOPIXELS_COLORGENERATORS_H

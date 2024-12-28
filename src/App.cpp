@@ -36,7 +36,8 @@ auto App::loop() -> void {
 
   auto stop = millis();
   auto time = stop - start;
-  auto sleep = MAX(MAX_MS - time, 0u);
+  i32 max = MAX_MS - time;
+  auto sleep = MAX(max, 0u);
   delay(sleep);
 }
 

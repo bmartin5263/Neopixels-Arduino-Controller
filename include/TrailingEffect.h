@@ -15,13 +15,13 @@ public:
   auto update() -> void;
   auto draw(NeopixelLine& line) -> void;
 
-  auto setPhase(u8 phase) -> void;
+  auto setPhase(u16 phase) -> void;
 
 private:
   TrailingColorGenerator* colorGenerator{};
   u8 length{};
   u8 speed{};
-  u8 phase{};
+  u16 phase{};
 };
 
 #endif //NEOPIXELS_TRAILINGEFFECT_H

@@ -19,7 +19,7 @@ private:
   auto draw() -> void;
   auto updateSubsystems() -> void;
 
-  static constexpr u32 MAX_MS = 5; // ~200 FPS
+  static constexpr i32 MAX_MS = 5; // ~200 FPS
 };
 
 #endif //NEOPIXELS_APP_H

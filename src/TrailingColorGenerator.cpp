@@ -6,5 +6,5 @@
 #include "Color.h"
 
 auto TrailingColorGenerator::generate(u32 time) -> Color {
-  return generate(time, 0, 0, 0);
+  return generate(time, 0, 0, 0, 0);
 }

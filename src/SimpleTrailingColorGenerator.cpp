@@ -9,7 +9,7 @@ SimpleTrailingColorGenerator::SimpleTrailingColorGenerator(ColorGenerator* deleg
   delegate(delegate)
 {}
 
-auto SimpleTrailingColorGenerator::generate(u32 time, u8 offset, u8 phase, u8 speed) -> Color {
+auto SimpleTrailingColorGenerator::generate(u32 time, u8 length, u8 offset, u16 phase, u8 speed) -> Color {
   return generate(time);
 }
 
