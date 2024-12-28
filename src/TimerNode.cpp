@@ -19,3 +19,12 @@ auto TimerNode::detach() -> void {
 auto TimerNode::execute(u32 time) -> void {
   action->execute({this, version}, time);
 }
+
+auto TimerNode::reset() -> void {
+  next = nullptr;
+  prev = nullptr;
+  cancelled = false;
+  action = nullptr;
+  version = 0;
+  executeAt = INT32_MAX;
+}

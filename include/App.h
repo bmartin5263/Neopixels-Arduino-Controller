@@ -13,7 +13,7 @@ public:
   auto loop() -> void;
 
 private:
-//  TimerDemo demo{};
+  TimerDemo demo{};
 
   auto update() -> void;
   auto draw() -> void;

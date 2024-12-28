@@ -9,10 +9,10 @@ SimpleTrailingColorGenerator::SimpleTrailingColorGenerator(ColorGenerator* deleg
   delegate(delegate)
 {}
 
-auto SimpleTrailingColorGenerator::generate(u32 time, NeopixelLine* line, u8 pixel) -> Color {
+auto SimpleTrailingColorGenerator::generate(u32 time, u8 offset, u8 phase, u8 speed) -> Color {
   return generate(time);
 }
 
-auto SimpleTrailingColorGenerator::generate(long time) -> Color {
+auto SimpleTrailingColorGenerator::generate(u32 time) -> Color {
   return delegate->generate(time);
 }

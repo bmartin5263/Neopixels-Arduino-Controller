@@ -5,15 +5,15 @@
 #ifndef NEOPIXELS_SIMPLETRAILINGCOLORGENERATOR_H
 #define NEOPIXELS_SIMPLETRAILINGCOLORGENERATOR_H
 
-#include "ColorGenerator.h"
+#include "TrailingColorGenerator.h"
 #include "Types.h"
 
 class NeopixelLine;
-class SimpleTrailingColorGenerator : public ColorGenerator {
+class SimpleTrailingColorGenerator : public TrailingColorGenerator {
 public:
   explicit SimpleTrailingColorGenerator(ColorGenerator* delegate);
-  auto generate(long time) -> Color override;
-  auto generate(u32 time, NeopixelLine* line, u8 pixel) -> Color;
+  auto generate(u32 time) -> Color override;
+  auto generate(u32 time, u8 offset, u8 phase, u8 speed) -> Color override;
 
 private:
   ColorGenerator* delegate;

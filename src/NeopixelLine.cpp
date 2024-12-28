@@ -37,9 +37,27 @@ auto NeopixelLine::setColor(u16 pixel, u8 r, u8 g, u8 b, u8 w) -> void {
   impl.setPixelColor(pixel, g, r, b, w);
 }
 
+auto NeopixelLine::fill(const Color& color) -> void {
+  // Argument order is intentionally GRB
+  for (int i = 0; i < impl.numPixels(); ++i) {
+    impl.setPixelColor(i, color.g, color.r, color.b, color.w);
+  }
+}
+
+auto NeopixelLine::fill(u8 r, u8 g, u8 b, u8 w) -> void {
+  // Argument order is intentionally GRB
+  for (int i = 0; i < impl.numPixels(); ++i) {
+    impl.setPixelColor(i, g, r, b, w);
+  }
+}
+
 auto NeopixelLine::getColor(u16 pixel) -> Color {
   u8 r, g, b, w;
   u32 rgbw = impl.getPixelColor(pixel);
   extractBytes(rgbw, r, g, b, w);
   return {r, g, b, w};
+}
+
+auto NeopixelLine::count() -> u16 {
+  return impl.numPixels();
 }

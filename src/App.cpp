@@ -10,7 +10,7 @@
 
 auto App::init() -> void {
   Log::Init();
-//  demo.init();
+  demo.init();
 
   Log::Info("sizeof(int) = ");
   Log::InfoLn((unsigned long) sizeof(int));
@@ -33,11 +33,11 @@ auto App::loop() -> void {
 
 auto App::update() -> void {
   updateSubsystems();
-//  demo.update();
+  demo.update();
 }
 
 auto App::draw() -> void {
-//  demo.draw();
+  demo.draw();
 }
 
 auto App::updateSubsystems() -> void {

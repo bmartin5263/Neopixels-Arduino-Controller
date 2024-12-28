@@ -50,8 +50,7 @@ public:
   }
 
   auto destroy(TimerNode* node) -> void {
-    ASSERT(node->next == nullptr, "next is not null");
-    ASSERT(node->prev == nullptr, "prev is not null");
+    node->reset();
     node->next = head;
     head = node;
   }

@@ -18,6 +18,7 @@ struct TimerNode {
   bool cancelled{};
 
   auto detach() -> void;
+  auto reset() -> void;
   auto execute(u32 time) -> void;
 };
 

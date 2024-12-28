@@ -48,6 +48,10 @@ auto Color::RED() -> Color {
   return c;
 }
 
+auto Color::RED(u8 intensity) -> Color {
+  return {intensity, 0, 0, 0};
+}
+
 auto Color::ORANGE() -> Color {
   static Color c{255, 64, 0, 0};
   return c;
@@ -66,6 +70,10 @@ auto Color::GOLD() -> Color {
 auto Color::MAROON() -> Color {
   static Color c{255, 215, 0, 0};
   return c;
+}
+
+auto Color::YELLOW(u8 intensity) -> Color {
+  return {intensity, intensity, 0, 0};
 }
 
 auto Color::YELLOW() -> Color {
@@ -88,6 +96,10 @@ auto Color::GREEN() -> Color {
   return c;
 }
 
+auto Color::GREEN(u8 intensity) -> Color {
+  return {0, intensity, 0, 0};
+}
+
 auto Color::AQUAMARINE() -> Color {
   static Color c{127, 255, 212, 0};
   return c;
@@ -98,9 +110,17 @@ auto Color::CYAN() -> Color {
   return c;
 }
 
+auto Color::CYAN(u8 intensity) -> Color {
+  return {0, intensity, intensity, 0};
+}
+
 auto Color::BLUE() -> Color {
   static Color c{0, 0, 255, 0};
   return c;
+}
+
+auto Color::BLUE(u8 intensity) -> Color {
+  return {0, 0, intensity, 0};
 }
 
 auto Color::PURPLE() -> Color {
@@ -123,8 +143,12 @@ auto Color::MAGENTA() -> Color {
   return c;
 }
 
-auto Color::WHITE() -> Color {
-  static Color c{0, 0, 0, 255};
+auto Color::MAGENTA(u8 intensity) -> Color {
+  return {intensity, 0, intensity, 0};
+}
+
+auto Color::WHITE(u8 intensity) -> Color {
+  static Color c{0, 0, 0, intensity};
   return c;
 }
 
@@ -133,7 +157,7 @@ auto Color::OFF() -> Color {
   return c;
 }
 
-double Color::hueToRgb(double p, double q, double t) {
+double Color::HueToRgb(double p, double q, double t) {
   if (t < 0) t += 1;
   if (t > 1) t -= 1;
   if (t < 1.0 / 6) return p + (q - p) * 6 * t;
@@ -151,9 +175,9 @@ Color Color::HslToRgb(double h, double s, double l) {
   } else {
     double q = l < 0.5 ? l * (1 + s) : l + s - l * s;
     double p = 2 * l - q;
-    r = hueToRgb(p, q, h + 1.0 / 3);
-    g = hueToRgb(p, q, h);
-    b = hueToRgb(p, q, h - 1.0 / 3);
+    r = HueToRgb(p, q, h + 1.0 / 3);
+    g = HueToRgb(p, q, h);
+    b = HueToRgb(p, q, h - 1.0 / 3);
   }
 
   // Convert to 0-255 range

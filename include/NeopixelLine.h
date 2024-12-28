@@ -23,10 +23,14 @@ public:
   auto setBrightness(u8 value) -> void;
 
   auto setColor(u16 pixel, const Color& color) -> void;
-
   auto setColor(u16 pixel, u8 r, u8 g, u8 b, u8 w) -> void;
 
   auto getColor(u16 pixel) -> Color;
+
+  auto fill(const Color& color) -> void;
+  auto fill(u8 r, u8 g, u8 b, u8 w) -> void;
+
+  auto count() -> u16;
 
 private:
   Adafruit_NeoPixel impl;

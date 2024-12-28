@@ -19,11 +19,11 @@ public:
   auto getState() -> ButtonState;
 
 private:
-  DigitalPin pin;
   ButtonState state;
-  int timeInState;
-  int _repeatDelay;
+  u16 timeInState;
+  u16 _repeatDelay;
   Callable _onPress;
+  DigitalPin pin;
 };
 
 #endif //NEOPIXELS_BUTTON_H

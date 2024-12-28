@@ -6,7 +6,7 @@
 #include "Button.h"
 
 Button::Button(DigitalPin pin)
-  : pin(pin), state(ButtonState::UNPRESSED), timeInState(0), _repeatDelay(0), _onPress([](){})
+  : state(ButtonState::UNPRESSED), timeInState(0), _repeatDelay(0), _onPress([](){}), pin(pin)
 {
 }
 

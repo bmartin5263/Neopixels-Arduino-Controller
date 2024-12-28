@@ -5,10 +5,13 @@
 #ifndef NEOPIXELS_COLORGENERATOR_H
 #define NEOPIXELS_COLORGENERATOR_H
 
-class Color;
+#include "Types.h"
+#include "Color.h"
+
+
 class ColorGenerator {
 public:
-  virtual auto generate(long time) -> Color = 0;
+  virtual auto generate(u32 time) -> Color = 0;
   virtual ~ColorGenerator() = default;
 };
 

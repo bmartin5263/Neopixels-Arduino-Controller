@@ -5,16 +5,18 @@
 #ifndef NEOPIXELS_CLOCKS_H
 #define NEOPIXELS_CLOCKS_H
 
+#include "Types.h"
+
 class Clocks {
 public:
   static auto NextTick() -> void;
-  static auto GlobalTime() -> long;
+  static auto GlobalTime() -> u32;
 
 private:
-  long global{};
+  u32 global{};
 
   auto nextTick() -> void;
-  auto globalTime() -> long;
+  auto globalTime() -> u32;
 
   static Clocks& Instance();
 };

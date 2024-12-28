@@ -4,11 +4,6 @@
 
 #include "Demo.h"
 
-static float h = 0.33; // Hue [0, 1]
-static float s = 1.0; // Saturation [0, 1]
-static float l = .5;  // Lightness [0, 1]
-static int timer = 0;
-
 float normalize(float value) {
   // Ensure input is within valid range
   if (value <= 5.0f) {

@@ -5,6 +5,8 @@
 #ifndef NEOPIXELS_DIGITALPIN_H
 #define NEOPIXELS_DIGITALPIN_H
 
+#include "Types.h"
+
 class DigitalPin {
 public:
   DigitalPin(int number);
@@ -13,7 +15,7 @@ public:
   int number() const;
 
 private:
-  int _number;
+  u8 _number;
 };
 
 #endif //NEOPIXELS_DIGITALPIN_H

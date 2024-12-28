@@ -9,15 +9,9 @@
 #include "Button.h"
 #include "TimerId.h"
 #include "TimerAction.h"
-
-class TimerDemo;
-class Action : public TimerAction {
-public:
-  explicit Action(TimerDemo* demo);
-  auto execute(TimerId timerId, u32 globalTime) -> void;
-
-  TimerDemo* demo{};
-};
+#include "TrailingColorGenerator.h"
+#include "TrailingEffect.h"
+#include "ColorGenerators.h"
 
 class TimerDemo {
 public:
@@ -33,10 +27,11 @@ private:
   static constexpr int LED_COUNT = 16;
 
   NeopixelRing ring{LED_COUNT, LED_PIN, NEO_RGBW + NEO_KHZ800};
-  Action action{this};
   Button button1{{2}};
   Button button2{{3}};
   TimerId timerId{};
+  BlueRedGenerator colorGenerator{};
+  TrailingEffect trailingEffect{};
   bool on{};
 };
 

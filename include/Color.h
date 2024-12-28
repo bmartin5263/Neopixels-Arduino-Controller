@@ -24,33 +24,40 @@ struct Color {
   // https://simple.wikipedia.org/wiki/List_of_colors
 
   static auto RED() -> Color;
+  static auto RED(u8 intensity) -> Color;
   static auto MAROON() -> Color;
   static auto SALMON() -> Color;
 
   static auto ORANGE() -> Color;
   static auto GOLD() -> Color;
   static auto YELLOW() -> Color;
+  static auto YELLOW(u8 intensity) -> Color;
 
   static auto LIME() -> Color;
   static auto SPRING_GREEN() -> Color;
   static auto GREEN() -> Color;
+  static auto GREEN(u8 intensity) -> Color;
 
   static auto AQUAMARINE() -> Color;
   static auto CYAN() -> Color;
+  static auto CYAN(u8 intensity) -> Color;
   static auto BLUE() -> Color;
+  static auto BLUE(u8 intensity) -> Color;
 
   static auto PURPLE() -> Color;
   static auto VIOLET() -> Color;
   static auto INDIGO() -> Color;
   static auto MAGENTA() -> Color;
+  static auto MAGENTA(u8 intensity) -> Color;
 
   static auto WHITE() -> Color;
+  static auto WHITE(u8 intensity) -> Color;
   static auto OFF() -> Color;
 
   static Color HslToRgb(double h, double s, double l);
 
 private:
-  static double hueToRgb(double p, double q, double t);
+  static double HueToRgb(double p, double q, double t);
 };
 
 #endif //NEOPIXELS_COLOR_H

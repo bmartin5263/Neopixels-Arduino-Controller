@@ -30,6 +30,14 @@ public:
     Serial.print(msg);
   }
 
+  static auto InfoLn(double msg) -> void {
+    Serial.println(msg);
+  }
+
+  static auto Info(double msg) -> void {
+    Serial.print(msg);
+  }
+
   static auto InfoLn(unsigned long msg) -> void {
     Serial.println(msg);
   }

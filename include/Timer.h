@@ -20,7 +20,7 @@ private:
   Timer();
   static auto Instance() -> Timer&;
 
-  TimerNodePool<20> nodePool;
+  TimerNodePool<10> nodePool;
   u16 nextVersion;
   TimerNode* head;
   TimerNode* queue;

@@ -12,26 +12,18 @@ auto TimerDemo::init() -> void {
   ring.init();
   button1.init();
   button2.init();
+  trailingEffect.init(colorGenerator, 8, 40);
 }
 
 auto TimerDemo::update() -> void {
   button1.update();
   button2.update();
-
-  if (button1.getState() == ButtonState::PRESS) {
-    setOn(true);
-    timerId = Timer::SetTimeout(3000, action);
-  }
-  if (button2.getState() == ButtonState::PRESS) {
-    Timer::Cancel(timerId);
-  }
+  trailingEffect.update();
 }
 
 auto TimerDemo::draw() -> void {
   ring.clear();
-  if (on) {
-    ring.setColor(0, Color::RED());
-  }
+  trailingEffect.draw(ring);
   ring.show();
 }
 
@@ -42,9 +34,3 @@ auto TimerDemo::destroy() -> void {
 auto TimerDemo::setOn(bool value) -> void {
   this->on = value;
 }
-
-auto Action::execute(TimerId timerId, u32 globalTime) -> void {
-  demo->setOn(false);
-}
-
-Action::Action(TimerDemo* demo) : demo(demo) {}
