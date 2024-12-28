@@ -39,14 +39,14 @@ auto NeopixelLine::setColor(u16 pixel, u8 r, u8 g, u8 b, u8 w) -> void {
 
 auto NeopixelLine::fill(const Color& color) -> void {
   // Argument order is intentionally GRB
-  for (int i = 0; i < impl.numPixels(); ++i) {
+  for (u16 i = 0; i < impl.numPixels(); ++i) {
     impl.setPixelColor(i, color.g, color.r, color.b, color.w);
   }
 }
 
 auto NeopixelLine::fill(u8 r, u8 g, u8 b, u8 w) -> void {
   // Argument order is intentionally GRB
-  for (int i = 0; i < impl.numPixels(); ++i) {
+  for (u16 i = 0; i < impl.numPixels(); ++i) {
     impl.setPixelColor(i, g, r, b, w);
   }
 }

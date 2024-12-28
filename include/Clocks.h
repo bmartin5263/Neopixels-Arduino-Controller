@@ -11,12 +11,17 @@ class Clocks {
 public:
   static auto NextTick() -> void;
   static auto GlobalTime() -> u32;
+  static auto GlobalFps() -> u32;
 
 private:
   u32 global{};
+  u32 globalFpsCounter{};
+  u32 lastTimeMs{};
+  double fps{};
 
   auto nextTick() -> void;
   auto globalTime() -> u32;
+  auto globalFps() -> u32;
 
   static Clocks& Instance();
 };

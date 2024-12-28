@@ -7,28 +7,37 @@
 #include "Clocks.h"
 #include "Log.h"
 #include "Timer.h"
+#include "Utils.h"
 
 auto App::init() -> void {
   Log::Init();
   demo.init();
 
+  Log::Info("System Info{");
   Log::Info("sizeof(int) = ");
-  Log::InfoLn((unsigned long) sizeof(int));
-  Log::Info("sizeof(long) = ");
-  Log::InfoLn((unsigned long) sizeof(long));
-  Log::Info("sizeof(long long) = ");
-  Log::InfoLn((unsigned long) sizeof(long long));
-  Log::Info("sizeof(App*) = ");
-  Log::InfoLn((unsigned long) sizeof(App*));
-  Log::Info("sizeof(App) = ");
-  Log::InfoLn((unsigned long) sizeof(App));
-  Log::InfoLn((unsigned long) sizeof(Timer));
-  Log::InfoLn((unsigned long) sizeof(TimerNode));
+  Log::Info((unsigned long) sizeof(int));
+  Log::Info(", sizeof(long) = ");
+  Log::Info((unsigned long) sizeof(long));
+  Log::Info(", sizeof(long long) = ");
+  Log::Info((unsigned long) sizeof(long long));
+  Log::Info(", sizeof(void*) = ");
+  Log::Info((unsigned long) sizeof(void*));
+  Log::Info(", sizeof(App) = ");
+  Log::Info((unsigned long) sizeof(App));
+  Log::InfoLn("}");
+
 }
 
 auto App::loop() -> void {
+  auto start = millis();
+
   update();
   draw();
+
+  auto stop = millis();
+  auto time = stop - start;
+  auto sleep = MAX(MAX_MS - time, 0u);
+  delay(sleep);
 }
 
 auto App::update() -> void {

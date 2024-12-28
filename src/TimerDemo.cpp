@@ -12,7 +12,7 @@ auto TimerDemo::init() -> void {
   ring.init();
   button1.init();
   button2.init();
-  trailingEffect.init(colorGenerator, 8, 40);
+  trailingEffect.init(colorGenerator2, 8, 4);
 }
 
 auto TimerDemo::update() -> void {

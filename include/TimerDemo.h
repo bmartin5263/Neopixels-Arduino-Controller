@@ -31,6 +31,8 @@ private:
   Button button2{{3}};
   TimerId timerId{};
   BlueRedGenerator colorGenerator{};
+  RainbowGenerator colorGenerator2{};
+  TrailingColorGenerator* current{&colorGenerator};
   TrailingEffect trailingEffect{};
   bool on{};
 };
