@@ -8,10 +8,11 @@
 #include "NeopixelLine.h"
 #include "Log.h"
 
-auto TrailingEffect::init(TrailingColorGenerator& colorGenerator, u8 length, u8 speed) -> void {
+auto TrailingEffect::init(TrailingColorGenerator& colorGenerator, u8 length, u8 speed, u16 phase) -> void {
   this->colorGenerator = &colorGenerator;
   this->length = length;
   this->speed = speed;
+  this->phase = phase;
 }
 
 auto TrailingEffect::update() -> void {

@@ -13,9 +13,9 @@ auto EffectTrailing::update() -> void {
   }
 
   if (hueTime++ >= 40) {
-    h += 0.01;
-    if (h > 1.0) {
-      h = 0.0;
+    h += 0.01f;
+    if (h > 1.0f) {
+      h = 0.0f;
     }
     hueTime = 0;
   }

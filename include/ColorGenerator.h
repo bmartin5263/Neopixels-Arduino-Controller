@@ -13,6 +13,8 @@ class ColorGenerator {
 public:
   virtual auto generate(u32 time) -> Color = 0;
   virtual ~ColorGenerator() = default;
+
+  static auto Default() -> ColorGenerator&;
 };
 
 #endif //NEOPIXELS_COLORGENERATOR_H

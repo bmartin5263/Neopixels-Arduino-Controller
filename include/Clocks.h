@@ -17,7 +17,7 @@ private:
   u32 global{};
   u32 globalFpsCounter{};
   u32 lastTimeMs{};
-  double fps{};
+  float fps{};
 
   auto nextTick() -> void;
   auto globalTime() -> u32;

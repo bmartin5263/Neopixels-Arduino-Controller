@@ -10,17 +10,17 @@ auto BlueRedGenerator::generate(u32 time, u8 length, u8 offset, u16 phase, u8 sp
 }
 
 auto RainbowGenerator::generate(u32 time, u8 length, u8 offset, u16 phase, u8 speed) -> Color {
-  auto t = time;
-  auto h = (t % 256) / 255.0;
-//  Log::Info((unsigned long) offset);
-//  Log::Info(" / ");
-//  Log::Info((unsigned long) length);
-//  Log::Info(" = ");
-  auto a = (double) offset / length;
-//  Log::InfoLn(a);
-  auto o = a + h;
-//  Log::Info(o);
-  auto x = Color::HslToRgb(o, 1.0, .5);
-//  Log::Info(" = good");
-  return x;
+  auto h = (time % 256) / 255.0f;
+  return Color::HslToRgb(h, 1.0f, .5f);
+}
+
+StaticColorGenerator::StaticColorGenerator(const Color& color): color(color) {
+}
+
+auto StaticColorGenerator::setColor(const Color& color) -> void {
+  this->color = color;
+}
+
+auto StaticColorGenerator::generate(u32 time, u8 length, u8 offset, u16 phase, u8 speed) -> Color {
+  return color;
 }

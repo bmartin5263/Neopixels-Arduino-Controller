@@ -12,6 +12,7 @@
 #include "TrailingColorGenerator.h"
 #include "TrailingEffect.h"
 #include "ColorGenerators.h"
+#include "FillEffect.h"
 
 class TimerDemo {
 public:
@@ -34,6 +35,8 @@ private:
   RainbowGenerator colorGenerator2{};
   TrailingColorGenerator* current{&colorGenerator};
   TrailingEffect trailingEffect{};
+  TrailingEffect trailingEffect2{};
+  FillEffect fillEffect{};
   bool on{};
 };
 

@@ -30,11 +30,11 @@ public:
     Serial.print(msg);
   }
 
-  static auto InfoLn(double msg) -> void {
+  static auto InfoLn(float msg) -> void {
     Serial.println(msg);
   }
 
-  static auto Info(double msg) -> void {
+  static auto Info(float msg) -> void {
     Serial.print(msg);
   }
 

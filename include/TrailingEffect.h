@@ -11,7 +11,7 @@ class TrailingColorGenerator;
 class NeopixelLine;
 class TrailingEffect {
 public:
-  auto init(TrailingColorGenerator& colorGenerator, u8 length, u8 speed) -> void;
+  auto init(TrailingColorGenerator& colorGenerator, u8 length, u8 speed, u16 phase = 0) -> void;
   auto update() -> void;
   auto draw(NeopixelLine& line) -> void;
 

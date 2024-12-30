@@ -17,4 +17,13 @@ public:
   auto generate(u32 time, u8 length, u8 offset, u16 phase, u8 speed) -> Color override;
 };
 
+class StaticColorGenerator : public TrailingColorGenerator {
+public:
+  StaticColorGenerator(const Color& color);
+  auto setColor(const Color& color) -> void;
+  auto generate(u32 time, u8 length, u8 offset, u16 phase, u8 speed) -> Color override;
+private:
+  Color color;
+};
+
 #endif //NEOPIXELS_COLORGENERATORS_H

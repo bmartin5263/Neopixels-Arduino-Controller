@@ -22,6 +22,10 @@ auto App::init() -> void {
   Log::Info((unsigned long) sizeof(long long));
   Log::Info(", sizeof(void*) = ");
   Log::Info((unsigned long) sizeof(void*));
+  Log::Info(", sizeof(float) = ");
+  Log::Info((unsigned long) sizeof(float));
+  Log::Info(", sizeof(double) = ");
+  Log::Info((unsigned long) sizeof(double));
   Log::Info(", sizeof(App) = ");
   Log::Info((unsigned long) sizeof(App));
   Log::InfoLn("}");

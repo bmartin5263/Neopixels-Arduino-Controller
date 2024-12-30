@@ -5,10 +5,10 @@
 #ifndef NEOPIXELS_NEOPIXELLINE_H
 #define NEOPIXELS_NEOPIXELLINE_H
 
-#include <../lib/AdafruitNeopixel/Adafruit_NeoPixel.h>
+#include "Adafruit_NeoPixel.h"
+#include "ColorProxy.h"
 #include "Types.h"
 
-struct Color;
 class Adafruit_NeoPixel;
 class NeopixelLine {
 public:
@@ -26,14 +26,22 @@ public:
   auto setColor(u16 pixel, u8 r, u8 g, u8 b, u8 w) -> void;
 
   auto getColor(u16 pixel) -> Color;
+  auto operator[](u16) -> ColorProxy;
 
   auto fill(const Color& color) -> void;
   auto fill(u8 r, u8 g, u8 b, u8 w) -> void;
 
+  auto fill(const Color& color, u16 length, u16 offset = 0) -> void;
+  auto fill(u8 r, u8 g, u8 b, u8 w, u16 length, u16 offset = 0) -> void;
+
   auto count() -> u16;
+
+  auto reverse() -> void;
+  auto getPixel(u16 value) -> u16;
 
 private:
   Adafruit_NeoPixel impl;
+  int offset;
 };
 
 #endif //NEOPIXELS_NEOPIXELLINE_H

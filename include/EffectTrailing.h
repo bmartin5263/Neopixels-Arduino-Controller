@@ -18,7 +18,7 @@ public:
 
 private:
   Color color{Color::RED()};
-  double h{};
+  float h{};
   int moveTime{};
   int moveRate{50};
   int hueTime{};
